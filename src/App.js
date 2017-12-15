@@ -1,12 +1,14 @@
 import React, { Component } from 'react';
 import './App.css';
+var marked = require('marked');
+
 
 class App extends Component {
 
   constructor(props){
     super(props);
     this.state = {
-      editorText:'I am groot'
+      editorText: '__I am groot__'
     };
 
   }
@@ -27,8 +29,7 @@ class App extends Component {
         </textarea>
         
         <h1>Markdown Previewer</h1>
-        <div id="preview">
-          {this.state.editorText}
+        <div id="preview" dangerouslySetInnerHTML={{ __html:marked(this.state.editorText) }}>
         </div>
 
       </div>
