@@ -3,7 +3,17 @@ import logo from './my_image.svg';
 import './App.css';
 var marked = require('marked');
 marked.setOptions({gfm:true});
+var renderer = new marked.Renderer();
 
+// Override renderer.link method 
+renderer.link = function (href, title, text) {
+
+
+  return '<a href="' + href + '" target="_blank">' + 
+            text + 
+         '</a>';
+
+};
 
 
 class App extends Component {
@@ -67,7 +77,7 @@ class App extends Component {
         </textarea>
         
         <h1>Markdown Previewer</h1>
-        <div id="preview" dangerouslySetInnerHTML={{ __html:marked(this.state.editorText) }}>
+        <div id="preview" dangerouslySetInnerHTML={{ __html:marked(this.state.editorText, { renderer: renderer }) }}>
         </div>
       </div>
     );
