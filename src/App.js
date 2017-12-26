@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import logo from './my_image.svg';
 import './App.css';
 var marked = require('marked');
-marked.setOptions({gfm:true});
+marked.setOptions({gfm:true, breaks:true });
 var renderer = new marked.Renderer();
 
 // Override renderer.link method 
